@@ -2,7 +2,7 @@ import React from 'react'
 
 interface header{
     headerText:string;
-    left?:string;
+    left?:Element;
     right?:string;
 }
 

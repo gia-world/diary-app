@@ -8,6 +8,7 @@ interface home{
 
 const Home = () => {
   const [curDate, setCurDate] = useState(new Date());
+  const headerText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
   
   const increaseMonth = () => {
     setCurDate(
