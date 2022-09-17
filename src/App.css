@@ -1,38 +1,201 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "Mobile-POP";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "Gilbeot";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f6f6f6;
+  font-family: "Mobile-POP";
 }
 
-.App-link {
-  color: #61dafb;
+#root {
+  background-color: #fff;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App {
+  min-height: 100vh;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
   }
+}
+
+/* Btn */
+.Btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.Btn_default {
+  background-color: #ececec;
+  color: #000;
+}
+
+.Btn_positive {
+  background-color: #64c964;
+  color: #fff;
+}
+
+.Btn_negative {
+  background-color: #fd565f;
+  color: #fff;
+}
+
+/* header */
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.header > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__text {
+  width: 50%;
+  font-size: 25px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header__btn {
+  width: 25%;
+}
+
+.header__btn--left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.header__btn--right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+/* DiaryList */
+.DiaryList nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px 0 30px;
+}
+
+.DiaryList nav .right_col {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.DiaryList nav .right_col button {
+  width: 100%;
+}
+
+.DiaryList .ControlMenu {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ececec;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+}
+
+/* DiaryItem */
+.DiaryItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.DiaryItem .emotion-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 120px;
+  height: 80px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.DiaryItem .emotion-img .emotion-img1 {
+  background-color: #64c964;
+}
+
+.DiaryItem .emotion-img .emotion-img2 {
+  background-color: #9dd772;
+}
+
+.DiaryItem .emotion-img .emotion-img3 {
+  background-color: #fdce17;
+}
+
+.DiaryItem .emotion-img .emotion-img4 {
+  background-color: #fd8446;
+}
+
+.DiaryItem .emotion-img .emotion-img5 {
+  background-color: #fd565f;
 }

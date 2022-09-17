@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "Mobile-POP";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilbeot";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$main-font: "Mobile-POP";
+$text-font: "Gilbeot";
+$e1: #64c964;
+$e2: #9dd772;
+$e3: #fdce17;
+$e4: #fd8446;
+$e5: #fd565f;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f6f6f6;
+  font-family: $main-font;
+}
+
+#root {
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+  @media (min-width: 650px) {
+    width: 640px;
+  }
+  @media (max-width: 650px) {
+    width: 90vw;
+  }
+}
+
+/* Btn */
+.Btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 18px;
+  &_default {
+    background-color: #ececec;
+    color: #000;
+  }
+  &_positive {
+    background-color: #64c964;
+    color: #fff;
+  }
+  &_negative {
+    background-color: #fd565f;
+    color: #fff;
+  }
+}
+
+/* header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e2e2;
+  > div {
+    display: flex;
+  }
+  &__text {
+    width: 50%;
+    font-size: 25px;
+    justify-content: center;
+  }
+  &__btn {
+    width: 25%;
+    &--left {
+      justify-content: start;
+    }
+    &--right {
+      justify-content: end;
+    }
+  }
+}
+
+/* DiaryList */
+.DiaryList {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 30px;
+    .right_col {
+      flex-grow: 1;
+      button {
+        width: 100%;
+      }
+    }
+  }
+  .ControlMenu {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ececec;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+  }
+}
+
+/* DiaryItem */
+.DiaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+  .emotion-img {
+    display: flex;
+    justify-content: center;
+    min-width: 120px;
+    height: 80px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    $colors: (
+      1: $e1,
+      2: $e2,
+      3: $e3,
+      4: $e4,
+      5: $e5,
+    );
+    @each $order, $color in $colors {
+      .emotion-img#{$order} {
+        background-color: $color;
+      }
+    }
+  }
+}
