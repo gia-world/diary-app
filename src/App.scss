@@ -21,6 +21,7 @@ $e2: #9dd772;
 $e3: #fdce17;
 $e4: #fd8446;
 $e5: #fd565f;
+$bg: #ececec;
 
 body {
   display: flex;
@@ -58,7 +59,7 @@ body {
   white-space: nowrap;
   font-size: 18px;
   &_default {
-    background-color: #ececec;
+    background-color: $bg;
     color: #000;
   }
   &_positive {
@@ -72,8 +73,9 @@ body {
 }
 
 /* header */
-.header {
+.Header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #e2e2e2;
@@ -114,7 +116,7 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
-    background-color: #ececec;
+    background-color: $bg;
     cursor: pointer;
     font-family: inherit;
     font-size: 18px;
@@ -128,25 +130,160 @@ body {
   align-items: center;
   padding: 15px 0;
   border-bottom: 1px solid #e2e2e2;
-  .emotion-img {
+  .img-wrap {
     display: flex;
     justify-content: center;
     min-width: 120px;
     height: 80px;
     border-radius: 6px;
     cursor: pointer;
-
-    $colors: (
-      1: $e1,
-      2: $e2,
-      3: $e3,
-      4: $e4,
-      5: $e5,
-    );
-    @each $order, $color in $colors {
-      .emotion-img#{$order} {
-        background-color: $color;
-      }
+    img {
+      width: 100%;
     }
   }
+  .desc-wrap {
+    flex-grow: 1;
+    margin-left: 20px;
+    cursor: pointer;
+    .date {
+    }
+    .preview {
+      margin-top: 5px;
+      font-size: 18px;
+    }
+  }
+  .btn-wrap {
+    min-width: 70px;
+  }
+}
+
+/* DiaryEditor */
+.DiaryEditor {
+  padding-bottom: 40px;
+  section + section {
+    margin-top: 40px;
+  }
+  h4 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .input_date {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: $bg;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 20px;
+  }
+  .list-wrap {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 2%;
+  }
+  .input_content {
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    resize: vertical;
+    box-sizing: border-box;
+    font: inherit;
+    border: none;
+    border-radius: 6px;
+    background-color: $bg;
+  }
+  .btn-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* EmotionItem */
+.EmotionItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  &__off {
+    background-color: $bg;
+  }
+
+  $colors: (
+    1: $e1,
+    2: $e2,
+    3: $e3,
+    4: $e4,
+    5: $e5,
+  );
+  @each $order, $color in $colors {
+  }
+  img {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  span {
+    font-size: 18px;
+  }
+}
+
+/* Diary */
+.DiaryPage {
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+  h4 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .img-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+    background-color: $bg;
+    .desc {
+      font-size: 25px;
+      color: #fff;
+    }
+  }
+  .content-wrap {
+    width: 100%;
+    overflow-wrap: break-word;
+    background-color: $bg;
+    border-radius: 6px;
+    word-break: keep-all;
+    p {
+      padding: 0 20px;
+      text-align: left;
+      line-height: 2.5;
+    }
+  }
+}
+
+$colors: (
+  1: $e1,
+  2: $e2,
+  3: $e3,
+  4: $e4,
+  5: $e5,
+);
+@each $order, $color in $colors {
+  .emotion-img#{$order} {
+    background-color: $color;
+  }
+  // .EmotionItem__on#{$order} {
+  //   background-color: $color;
+  // }
 }
