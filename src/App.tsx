@@ -7,7 +7,18 @@ import Edit from "./pages/Edit";
 import Home from "./pages/Home";
 import New from "./pages/New";
 
-const reducer = (state: [], action: object) => {
+interface Action<P> {
+  readonly type: string;
+  readonly payload:P
+}
+
+type Data={
+  data:string;
+  id:number;
+  targetId:number
+}
+
+const reducer = (state: [], action: Action<Data>) => {
   let newState = [];
   switch (action.type) {
     case "INIT": {
