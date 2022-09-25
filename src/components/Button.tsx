@@ -2,7 +2,7 @@ import React from "react";
 
 interface Button {
   text: string;
-  type?: any; //? what to use???
+  type: "positive" | "negative";
   onClick: React.DOMAttributes<HTMLButtonElement>["onClick"];
 }
 
