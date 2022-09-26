@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Data, DiaryStateContext, State } from "../App";
+import { Data, DiaryStateContext } from "../App";
 import Button from "../components/Button";
 import Header from "../components/Header";
 
@@ -7,7 +7,7 @@ const Home = () => {
   const diaryList = useContext(DiaryStateContext);
   console.log(diaryList);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Data[]>([]);
   const [curDate, setCurDate] = useState(new Date());
   const headerText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
@@ -23,11 +23,13 @@ const Home = () => {
       0
     ).getTime();
 
-    setData(
-      diaryList?.filter(
-        (it: State) => firstday <= it.date && it.date <= lastDay
-      )
-    );
+    if (diaryList) {
+      setData(
+        diaryList?.filter(
+          (it) => it && it.date && firstDay <= it.date && it.date <= lastDay
+        )
+      );
+    }
   }, [curDate]);
 
   const increaseMonth = () => {

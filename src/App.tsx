@@ -1,5 +1,7 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React, { useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { getSystemErrorMap } from "util";
 import "./App.css";
 
 import Diary from "./pages/Diary";
@@ -32,7 +34,7 @@ export type Data = {
 };
 export type State = Data[];
 type Action =
-  | { type: "INIT"; data: State }
+  | { type: "INIT"; data: Data[] }
   | { type: "CREATE"; data: Data }
   | { type: "REMOVE"; id?: number; targetId: number }
   | { type: "EDIT"; data: Data };
@@ -44,8 +46,6 @@ const reducer = (state: State, action: Action): State => {
       return action.data;
     }
     case "CREATE": {
-      // const newItem = { ...action.data };
-      // newState = [newItem, ...state];
       newState = [action.data, ...state];
       break;
     }
@@ -66,21 +66,6 @@ const reducer = (state: State, action: Action): State => {
   localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
-
-type DiaryDispatch = {
-  onCreate: (date: number, content: string, emotion: number) => void;
-  onEdit: (
-    targetId: number,
-    date: number,
-    content: string,
-    emotion: number
-  ) => void;
-  onRemove: (targetId: number) => void;
-};
-export const DiaryStateContext = React.createContext<State | null>(null);
-export const DiaryDispatchContext = React.createContext<DiaryDispatch | null>(
-  null
-);
 
 const dummyData = [
   {
@@ -115,28 +100,30 @@ const dummyData = [
   },
 ];
 
+type OnCreate = (date: number, content: string, emotion: number) => void;
+type OnEdit = (
+  targetId: number,
+  date: number,
+  content: string,
+  emotion: number
+) => void;
+type OnRemove = (targetId: number) => void;
+type DiaryDispatch = {
+  onCreate: OnCreate;
+  onEdit: OnEdit;
+  onRemove: OnRemove;
+};
+export const DiaryStateContext = React.createContext<State | null>(null);
+export const DiaryDispatchContext = React.createContext<DiaryDispatch | null>(
+  null
+);
+
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyData);
 
-  useEffect(() => {
-    const localData = localStorage.getItem("diary");
-    if (localData) {
-      const diaryList = JSON.parse(localData).sort(
-        (a: { id: string }, b: { id: string }) =>
-          parseInt(b.id) - parseInt(a.id)
-      ); //내림차순 정렬
-
-      if (diaryList.length >= 1) {
-        dataId.current = parseInt(diaryList[0].id) + 1;
-        dispatch({ type: "INIT", data: diaryList });
-      }
-      console.log(diaryList);
-    }
-  }, []);
-
   //CREATE
   const dataId = useRef(0);
-  const onCreate = (date: number, content: string, emotion: number) => {
+  const onCreate: OnCreate = (date, content, emotion) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -150,17 +137,12 @@ function App() {
   };
 
   //REMOVE
-  const onRemove = (targetId: number) => {
+  const onRemove: OnRemove = (targetId) => {
     dispatch({ type: "REMOVE", targetId });
   };
 
   //EDIT
-  const onEdit = (
-    targetId: number,
-    date: number,
-    content: string,
-    emotion: number
-  ) => {
+  const onEdit: OnEdit = (targetId, date, content, emotion) => {
     dispatch({
       type: "EDIT",
       data: {
@@ -171,6 +153,22 @@ function App() {
       },
     });
   };
+
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a: { id: number }, b: { id: number }) =>
+          parseInt(String(b.id)) - parseInt(String(a.id))
+      ); //내림차순 정렬
+
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
+      console.log(diaryList);
+    }
+  }, []);
 
   return (
     <DiaryStateContext.Provider value={data}>
