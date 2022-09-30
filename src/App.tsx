@@ -9,22 +9,6 @@ import Edit from "./pages/Edit";
 import Home from "./pages/Home";
 import New from "./pages/New";
 
-// interface Action<P> {
-//   readonly type: string;
-//   readonly payload: P;
-// }
-
-// type Action2 =
-//   | { type: "INIT"; payload: number }
-//   | { type: "CREATE"; payload: Diary }
-//   | { type: "REMOVE"; payload: number }
-//   | { type: "EDIT"; payload: Diary };
-// type Diary = {
-//   data: string;
-//   id: number;
-//   emotion:number;
-// };
-// type Diarys=Diary[]
 export type Data = {
   id?: number;
   date?: number;
@@ -33,6 +17,7 @@ export type Data = {
   targetId?: number;
 };
 export type State = Data[];
+
 type Action =
   | { type: "INIT"; data: Data[] }
   | { type: "CREATE"; data: Data }
@@ -100,6 +85,12 @@ const dummyData = [
   },
 ];
 
+type DiaryDispatch = {
+  onCreate: OnCreate;
+  onEdit: OnEdit;
+  onRemove: OnRemove;
+};
+
 type OnCreate = (date: number, content: string, emotion: number) => void;
 type OnEdit = (
   targetId: number,
@@ -108,11 +99,7 @@ type OnEdit = (
   emotion: number
 ) => void;
 type OnRemove = (targetId: number) => void;
-type DiaryDispatch = {
-  onCreate: OnCreate;
-  onEdit: OnEdit;
-  onRemove: OnRemove;
-};
+
 export const DiaryStateContext = React.createContext<State | null>(null);
 export const DiaryDispatchContext = React.createContext<DiaryDispatch | null>(
   null
@@ -154,21 +141,21 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    const localData = localStorage.getItem("diary");
-    if (localData) {
-      const diaryList = JSON.parse(localData).sort(
-        (a: { id: number }, b: { id: number }) =>
-          parseInt(String(b.id)) - parseInt(String(a.id))
-      ); //내림차순 정렬
+  // useEffect(() => {
+  //   const localData = localStorage.getItem("diary");
+  //   if (localData) {
+  //     const diaryList = JSON.parse(localData).sort(
+  //       (a: { id: number }, b: { id: number }) =>
+  //         parseInt(String(b.id)) - parseInt(String(a.id))
+  //     ); //내림차순 정렬
 
-      if (diaryList.length >= 1) {
-        dataId.current = parseInt(diaryList[0].id) + 1;
-        dispatch({ type: "INIT", data: diaryList });
-      }
-      console.log(diaryList);
-    }
-  }, []);
+  //     if (diaryList.length >= 1) {
+  //       dataId.current = parseInt(diaryList[0].id) + 1;
+  //       dispatch({ type: "INIT", data: diaryList });
+  //     }
+  //     console.log(diaryList);
+  //   }
+  // }, []);
 
   return (
     <DiaryStateContext.Provider value={data}>
