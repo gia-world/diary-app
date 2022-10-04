@@ -1,12 +1,12 @@
 import React from "react";
 
-interface Button {
+interface ButtonType {
   text: string;
   type: "positive" | "negative";
   onClick: React.DOMAttributes<HTMLButtonElement>["onClick"];
 }
 
-const Button = ({ text, type, onClick }: Button) => {
+const Button = ({ text, type, onClick }: ButtonType) => {
   const btnType = ["positive", "negative"].includes(type) ? type : "default";
   return (
     <button className={["Btn", `Btn_${btnType}`].join(" ")} onClick={onClick}>

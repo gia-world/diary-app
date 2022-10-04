@@ -1,7 +1,5 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getSystemErrorMap } from "util";
 import "./App.css";
 
 import Diary from "./pages/Diary";
@@ -17,7 +15,6 @@ export type Data = {
   targetId?: number;
 };
 export type State = Data[];
-
 type Action =
   | { type: "INIT"; data: Data[] }
   | { type: "CREATE"; data: Data }
@@ -85,12 +82,6 @@ const dummyData = [
   },
 ];
 
-type DiaryDispatch = {
-  onCreate: OnCreate;
-  onEdit: OnEdit;
-  onRemove: OnRemove;
-};
-
 type OnCreate = (date: number, content: string, emotion: number) => void;
 type OnEdit = (
   targetId: number,
@@ -99,7 +90,11 @@ type OnEdit = (
   emotion: number
 ) => void;
 type OnRemove = (targetId: number) => void;
-
+type DiaryDispatch = {
+  onCreate: OnCreate;
+  onEdit: OnEdit;
+  onRemove: OnRemove;
+};
 export const DiaryStateContext = React.createContext<State | null>(null);
 export const DiaryDispatchContext = React.createContext<DiaryDispatch | null>(
   null
