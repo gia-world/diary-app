@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Data } from "../App";
 import Button from "./Button";
 
-interface DiaryItemType extends Data {
-  children: React.ReactNode;
-}
+// interface DiaryItemType extends Data {
+//   children: React.ReactNode;
+// }
 
-const DiaryItem = ({ id, emotion, content, date }: DiaryItemType) => {
+const DiaryItem = ({ id, emotion, content, date }: Data) => {
   const navigate = useNavigate();
 
   const strDate = new Date(date).toLocaleDateString();
