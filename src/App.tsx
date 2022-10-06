@@ -8,18 +8,20 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 
 export type Data = {
-  id?: number;
-  date?: number;
-  content?: string;
-  emotion?: number;
+  id: number;
+  date: number;
+  content: string;
+  emotion: number;
   targetId?: number;
 };
-export type State = Data[];
+
+type State = Data[];
+
 type Action =
-  | { type: "INIT"; data: Data[] }
-  | { type: "CREATE"; data: Data }
-  | { type: "REMOVE"; id?: number; targetId: number }
-  | { type: "EDIT"; data: Data };
+| { type: "INIT"; data: Data[] }
+| { type: "CREATE"; data: Data }
+| { type: "REMOVE"; id?: number; targetId: number }
+| { type: "EDIT"; data: Data };
 
 const reducer = (state: State, action: Action): State => {
   let newState: State = [];

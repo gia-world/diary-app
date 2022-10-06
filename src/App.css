@@ -1,13 +1,13 @@
 @font-face {
-  font-family: "Mobile-POP";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff") format("woff");
+  font-family: 'prettynight';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Gilbeot";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff") format("woff");
+  font-family: 'LeeSeoyun';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -25,7 +25,7 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: #f6f6f6;
-  font-family: "Mobile-POP";
+  font-family: "LeeSeoyun";
 }
 
 #root {
@@ -60,6 +60,7 @@ body {
   border-radius: 5px;
   padding: 10px 20px;
   white-space: nowrap;
+  font-family: inherit;
   font-size: 18px;
 }
 
@@ -184,7 +185,7 @@ body {
 }
 
 .DiaryItem .img-wrap img {
-  width: 100%;
+  height: 100%;
 }
 
 .DiaryItem .desc-wrap {
