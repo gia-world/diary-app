@@ -1,8 +1,11 @@
 import React from 'react'
+import DiaryEditor from '../components/DiaryEditor'
 
 const New = () => {
   return (
-    <div>New</div>
+    <div>
+      <DiaryEditor/>
+    </div>
   )
 }
 
