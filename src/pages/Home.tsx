@@ -14,10 +14,22 @@ const Home = () => {
   // 해당 월의 일기만 가져오기
   useEffect(() => {
     if (diaryList && diaryList.length >= 1) {
-      const firstDay = new Date(curDate.getFullYear(), curDate.getMonth(), 1).getTime();
-      const lastDay = new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0).getTime();
+      const firstDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth(),
+        1
+      ).getTime();
+      const lastDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth() + 1,
+        0
+      ).getTime();
 
-      setData(diaryList.filter((it) => it && it.date && firstDay <= it.date && it.date <= lastDay));
+      setData(
+        diaryList.filter(
+          (it) => it && it.date && firstDay <= it.date && it.date <= lastDay
+        )
+      );
     }
   }, [diaryList, curDate]);
 
@@ -28,16 +40,24 @@ const Home = () => {
 
   // 월 설정 버튼 함수
   const increaseMonth = () => {
-    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate()));
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
+    );
   };
   const decreaseMonth = () => {
-    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate()));
+    setCurDate(
+      new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
+    );
   };
 
   return (
     <>
-      <Header headerText={headerText} left={<Button text={"<"} onClick={decreaseMonth} />} right={<Button text={">"} onClick={increaseMonth} />} />
-      <DiaryList diaryList={data}/>
+      <Header
+        headerText={headerText}
+        left={<Button text={"<"} onClick={decreaseMonth} />}
+        right={<Button text={">"} onClick={increaseMonth} />}
+      />
+      <DiaryList diaryList={data} />
     </>
   );
 };
