@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -18,10 +18,10 @@ export type Data = {
 type State = Data[];
 
 type Action =
-| { type: "INIT"; data: Data[] }
-| { type: "CREATE"; data: Data }
-| { type: "REMOVE"; id?: number; targetId: number }
-| { type: "EDIT"; data: Data };
+  | { type: "INIT"; data: Data[] }
+  | { type: "CREATE"; data: Data }
+  | { type: "REMOVE"; id?: number; targetId: number }
+  | { type: "EDIT"; data: Data };
 
 const reducer = (state: State, action: Action): State => {
   let newState: State = [];
@@ -84,15 +84,15 @@ const dummyData = [
   },
 ];
 
-type OnCreate = (date: number, content: string, emotion: number) => void;
+type OnCreate = (date: string, content: string, emotion: number) => void;
 type OnEdit = (
   targetId: number,
-  date: number,
+  date: string,
   content: string,
   emotion: number
 ) => void;
 type OnRemove = (targetId: number) => void;
-type DiaryDispatch = {
+export type DiaryDispatch = {
   onCreate: OnCreate;
   onEdit: OnEdit;
   onRemove: OnRemove;

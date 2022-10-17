@@ -1,18 +1,20 @@
 @font-face {
-  font-family: 'prettynight';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+  font-family: "prettynight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'LeeSeoyun';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-family: "LeeSeoyun";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
-$main-font:'LeeSeoyun';
-$text-font: 'prettynight';
+$main-font: "LeeSeoyun";
+$text-font: "prettynight";
 $e1: #64c964;
 $e2: #9dd772;
 $e3: #fdce17;
@@ -175,15 +177,16 @@ body {
     font-size: 20px;
   }
   .list-wrap {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
+    display: flex;
+    // display: grid;
+    // grid-template-columns: repeat(5, auto);
     gap: 2%;
   }
   .input-content {
     width: 100%;
     min-height: 200px;
     padding: 20px;
-    resize: vertical;
+    resize: none;
     box-sizing: border-box;
     font: inherit;
     border: none;
