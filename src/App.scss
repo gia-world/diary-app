@@ -248,12 +248,12 @@ body {
   .img-wrap {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 250px;
     height: 250px;
     border-radius: 6px;
-    background-color: $bg;
+    // background-color: $bg;
     .desc {
       font-size: 25px;
       color: #fff;

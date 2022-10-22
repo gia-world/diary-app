@@ -20,9 +20,12 @@ const Home = () => {
         1
       ).getTime();
       const lastDay = new Date(
+        //시간 객체를 사용할 때는 시분초까지 영향이 있음
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,59
       ).getTime();
 
       setData(
