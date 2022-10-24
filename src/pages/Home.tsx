@@ -4,12 +4,31 @@ import Button from "../components/Button";
 import DiaryList from "../components/DiaryList";
 import Header from "../components/Header";
 
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 const Home = () => {
   const diaryList = useContext(DiaryStateContext);
 
   const [data, setData] = useState<Data[]>([]);
   const [curDate, setCurDate] = useState(new Date());
-  const headerText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
+  // const headerText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
+  // 영문으로 바꾸기
+  const headerText = `${
+    monthNames[curDate.getMonth()]
+  } ${curDate.getFullYear()}`;
 
   // 해당 월의 일기만 가져오기
   useEffect(() => {
@@ -25,7 +44,8 @@ const Home = () => {
         curDate.getMonth() + 1,
         0,
         23,
-        59,59
+        59,
+        59
       ).getTime();
 
       setData(

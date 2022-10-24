@@ -279,10 +279,12 @@ body {
   padding: 20px 0;
   border-radius: 6px;
   cursor: pointer;
+  color: #fff;
 }
 
 .EmotionItem__off {
   background-color: #ececec;
+  color: #000;
 }
 
 .EmotionItem img {

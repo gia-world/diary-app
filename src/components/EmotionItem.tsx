@@ -1,6 +1,6 @@
 import React from "react";
 
-type EmotionItemType = {
+type Props = {
   emotion_id: number;
   emotion_url: string;
   emotion_descript: string;
@@ -13,7 +13,7 @@ const EmotionItem = ({
   emotion_descript,
   onClick,
   isSelected,
-}: EmotionItemType) => {
+}: Props) => {
   return (
     <div
       className={[

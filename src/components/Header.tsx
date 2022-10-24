@@ -1,12 +1,12 @@
 import React, { ReactElement, ReactNode } from "react";
 
-interface Header {
+interface Props {
   headerText: string;
   left?: ReactElement;
-  right?: ReactElement|ReactNode;
+  right?: ReactElement | ReactNode;
 }
 
-const Header = ({ headerText, left, right }: Header) => {
+const Header = ({ headerText, left, right }: Props) => {
   return (
     <header className="Header">
       <div className="Header__btn--left">{left}</div>

@@ -16,17 +16,17 @@ const filterOptionList = [
   { value: "bad", name: "Bad one only" },
 ];
 
-type DiaryListType = {
+type Props = {
   diaryList: Data[];
 };
-const DiaryList = ({ diaryList }: DiaryListType) => {
+const DiaryList = ({ diaryList }: Props) => {
   const navigate = useNavigate();
 
   const [sortType, setSortType] = useState<string>("latest");
   const [filter, setFilter] = useState("all");
 
   // 분기를 나눠 정렬된 리스트 반환하기
-  // type getProcessedDiaryListType = () => Data[]; //?
+  // type getProcessedDiaryListType = () => Data[];
   // 함수의 타입을 줄 필요 없음,
   // copyList가 깊은 복사를 하면서 타입이 해제되었기 때문
   const getProcessedDiaryList = () => {
