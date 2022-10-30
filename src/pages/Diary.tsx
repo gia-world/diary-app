@@ -14,6 +14,11 @@ const Diary = () => {
   const [data, setData] = useState<Data>();
 
   useEffect(() => {
+    const titleEl = document.getElementsByTagName("title")[0];
+    titleEl.innerHTML = `Emotion Diary - the diary no.${id}`;
+  }, []);
+
+  useEffect(() => {
     const targetDiary = diaryList && diaryList.find((it) => it.id === id);
     if (targetDiary) {
       //일기가 존재할 때
@@ -29,7 +34,9 @@ const Diary = () => {
     return <div className="DiaryPage">Loading...</div>;
   } else {
     // 감정 이모티콘에 따른 감정 설명 불러오기
-    const curEmotionData = emotionList.find((it) => it.emotion_id === data.emotion);
+    const curEmotionData = emotionList.find(
+      (it) => it.emotion_id === data.emotion
+    );
 
     //? curEmotionData가 없을 수 있으니까
     if (!curEmotionData) {
@@ -40,13 +47,23 @@ const Diary = () => {
           <Header
             headerText={`${getStringDate(new Date(data.date))}`}
             left={<Button text={"< Back"} onClick={() => navigate(-1)} />}
-            right={<Button text={"Edit"} onClick={() => navigate(`/edit/${data.id}`)} />}
+            right={
+              <Button
+                text={"Edit"}
+                onClick={() => navigate(`/edit/${data.id}`)}
+              />
+            }
           />
           <article>
             <section>
               <h4>Emotion of the day</h4>
-              <div className={["img-wrap", `emotion-img${data.emotion}`].join(" ")}>
-                <img src={curEmotionData.emotion_url} alt={curEmotionData.emotion_descript} />
+              <div
+                className={["img-wrap", `emotion-img${data.emotion}`].join(" ")}
+              >
+                <img
+                  src={curEmotionData.emotion_url}
+                  alt={curEmotionData.emotion_descript}
+                />
                 <div className="desc">{curEmotionData.emotion_descript}</div>
               </div>
             </section>

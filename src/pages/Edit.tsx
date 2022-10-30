@@ -11,6 +11,11 @@ const Edit = () => {
   // useParams 는 자동으로 타입이 string|undefined 지정됨
   const id = Number(listId);
 
+  useEffect(() => {
+    const titleEl = document.getElementsByTagName("title")[0];
+    titleEl.innerHTML = `Emotion Diary - Editing the diary no.${id}`;
+  }, []);
+
   //data state에 있는 일기 목록 가져오기
   const diaryList = useContext(DiaryStateContext);
   // console.log(diaryList);

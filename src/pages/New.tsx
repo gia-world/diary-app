@@ -1,12 +1,17 @@
-import React from 'react'
-import DiaryEditor from '../components/DiaryEditor'
+import React, { useEffect } from "react";
+import DiaryEditor from "../components/DiaryEditor";
 
 const New = () => {
+  useEffect(() => {
+    const titleEl = document.getElementsByTagName("title")[0];
+    titleEl.innerHTML = `Emotion Diary - new diary`;
+  }, []);
+
   return (
     <div>
-      <DiaryEditor/>
+      <DiaryEditor />
     </div>
-  )
-}
+  );
+};
 
-export default New
+export default New;
