@@ -12,6 +12,19 @@
   font-style: normal;
 }
 
+html,
+body {
+  font-size: 62.5%;
+  line-height: 1.285;
+}
+
+@media (max-width: 45rem) {
+  html,
+  body {
+    font-size: 50%;
+  }
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,6 +36,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
+  min-width: 33rem;
   margin: 0;
   background-color: #f6f6f6;
   font-family: "LeeSeoyun";
@@ -36,20 +50,21 @@ body {
 
 .App {
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 0 2rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 45rem) {
   .App {
-    width: 640px;
+    width: calc($bp - 1rem);
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 45rem) {
   .App {
     width: 90vw;
+    min-width: 32rem;
   }
 }
 
@@ -58,10 +73,10 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   white-space: nowrap;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 .Btn_default {
@@ -90,7 +105,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 20px 0;
+  padding: 2rem 0;
   border-bottom: 1px solid #e2e2e2;
 }
 
@@ -102,7 +117,7 @@ body {
 
 .Header__text {
   width: 50%;
-  font-size: 25px;
+  font-size: 2.5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -132,7 +147,8 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 20px 0 30px;
+  gap: 1rem;
+  margin: 2rem 0 3rem;
 }
 
 .DiaryList nav .right_col {
@@ -145,15 +161,38 @@ body {
   width: 100%;
 }
 
+.DiaryList nav .left_col {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 1rem;
+}
+
+.DiaryList nav .left_col .ControlMenu {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+@media (max-width: 45rem) {
+  .DiaryList nav {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .DiaryList .ControlMenu {
-  margin-right: 10px;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 6px;
   background-color: #ececec;
   cursor: pointer;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 /* DiaryItem */
@@ -167,7 +206,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 15px 0;
+  gap: 2rem;
+  padding: 1.5rem 0;
   border-bottom: 1px solid #e2e2e2;
 }
 
@@ -178,8 +218,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-width: 120px;
-  height: 80px;
+  width: 12rem;
+  min-width: 6.6rem;
+  height: 8rem;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -192,26 +233,39 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  margin-left: 20px;
   cursor: pointer;
 }
 
+.DiaryItem .desc-wrap .date {
+  font-size: 1.6rem;
+}
+
 .DiaryItem .desc-wrap .preview {
-  margin-top: 5px;
-  font-size: 18px;
+  margin-top: 0.5rem;
+  font-size: 1.8rem;
 }
 
 .DiaryItem .btn-wrap {
-  min-width: 70px;
+  min-width: 7rem;
+}
+
+@media (max-width: 45rem) {
+  .DiaryItem .img-wrap {
+    width: 20%;
+    min-width: 8.25rem;
+  }
+  .DiaryItem .desc-wrap {
+    min-width: 20.75rem;
+  }
 }
 
 /* DiaryEditor */
 .DiaryEditor {
-  padding-bottom: 40px;
+  padding-bottom: 4rem;
 }
 
 .DiaryEditor section + section {
-  margin-top: 40px;
+  margin-top: 4rem;
 }
 
 .DiaryEditor h4 {
@@ -220,13 +274,13 @@ body {
 }
 
 .DiaryEditor .input-date {
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 6px;
   background-color: #ececec;
   cursor: pointer;
   font-family: inherit;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 .DiaryEditor .list-wrap {
@@ -238,8 +292,8 @@ body {
 
 .DiaryEditor .input-content {
   width: 100%;
-  min-height: 200px;
-  padding: 20px;
+  min-height: 20rem;
+  padding: 2rem;
   resize: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -276,7 +330,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 20px 0;
+  padding: 2rem 0;
   border-radius: 6px;
   cursor: pointer;
   color: #fff;
@@ -289,7 +343,7 @@ body {
 
 .EmotionItem img {
   width: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .EmotionItem span {
@@ -309,7 +363,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 10rem;
   text-align: center;
 }
 
@@ -332,8 +386,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 250px;
-  height: 250px;
+  width: 25rem;
+  height: 25rem;
   border-radius: 6px;
 }
 
@@ -351,7 +405,7 @@ body {
 }
 
 .DiaryPage .content-wrap p {
-  padding: 0 20px;
+  padding: 0 2rem;
   text-align: left;
   line-height: 2.5;
 }

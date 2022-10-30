@@ -13,6 +13,7 @@
   font-style: normal;
 }
 
+$bp: 45rem;
 $main-font: "LeeSeoyun";
 $text-font: "prettynight";
 $e1: #64c964;
@@ -22,11 +23,27 @@ $e4: #fd8446;
 $e5: #fd565f;
 $bg: #ececec;
 
+$browser-context: 8; //html font-size 50%
+
+@function rem($px, $context: $browser-context) {
+  @return #{$px/$context}rem;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  line-height: 1.285;
+  @media (max-width: $bp) {
+    font-size: 50%;
+  }
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-width: 33rem;
   margin: 0;
   background-color: #f6f6f6;
   font-family: $main-font;
@@ -39,13 +56,14 @@ body {
 
 .App {
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 0 2rem;
   box-sizing: border-box;
-  @media (min-width: 650px) {
-    width: 640px;
+  @media (min-width: $bp) {
+    width: calc($bp - 1rem);
   }
-  @media (max-width: 650px) {
+  @media (max-width: $bp) {
     width: 90vw;
+    min-width: 32rem;
   }
 }
 
@@ -54,10 +72,10 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   white-space: nowrap;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 1.8rem;
   &_default {
     background-color: $bg;
     color: #000;
@@ -77,14 +95,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 2rem 0;
   border-bottom: 1px solid #e2e2e2;
   > div {
     display: flex;
   }
   &__text {
     width: 50%;
-    font-size: 25px;
+    font-size: 2.5rem;
     justify-content: center;
   }
   &__btn {
@@ -103,23 +121,35 @@ body {
   nav {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0 30px;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
     .right_col {
       flex-grow: 1;
       button {
         width: 100%;
       }
     }
+    .left_col {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      .ControlMenu {
+        flex-grow: 1;
+      }
+    }
+    @media (max-width: $bp) {
+      flex-wrap: wrap;
+    }
   }
   .ControlMenu {
-    margin-right: 10px;
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 6px;
     background-color: $bg;
     cursor: pointer;
     font-family: inherit;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 }
 
@@ -128,13 +158,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  gap: 2rem;
+  padding: 1.5rem 0;
   border-bottom: 1px solid #e2e2e2;
   .img-wrap {
     display: flex;
     justify-content: center;
-    min-width: 120px;
-    height: 80px;
+    width: 12rem;
+    min-width: 6.6rem;
+    height: 8rem;
     border-radius: 6px;
     cursor: pointer;
     img {
@@ -143,38 +175,48 @@ body {
   }
   .desc-wrap {
     flex-grow: 1;
-    margin-left: 20px;
+    // margin-left: 2rem;
     cursor: pointer;
-    // .date {
-    // }
+    .date {
+      font-size: 1.6rem;
+    }
     .preview {
-      margin-top: 5px;
-      font-size: 18px;
+      margin-top: 0.5rem;
+      font-size: 1.8rem;
     }
   }
   .btn-wrap {
-    min-width: 70px;
+    min-width: 7rem;
+  }
+  @media (max-width: $bp) {
+    .img-wrap {
+      width: 20%;
+      min-width: rem(66);
+    }
+    .desc-wrap {
+      min-width: rem(166);
+    }
   }
 }
 
 /* DiaryEditor */
 .DiaryEditor {
-  padding-bottom: 40px;
+  padding-bottom: 4rem;
   section + section {
-    margin-top: 40px;
+    margin-top: 4rem;
   }
   h4 {
     font-size: 22px;
     font-weight: bold;
   }
   .input-date {
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 6px;
     background-color: $bg;
     cursor: pointer;
     font-family: inherit;
-    font-size: 20px;
+    font-size: 2rem;
   }
   .list-wrap {
     display: flex;
@@ -184,8 +226,8 @@ body {
   }
   .input-content {
     width: 100%;
-    min-height: 200px;
-    padding: 20px;
+    min-height: 20rem;
+    padding: 2rem;
     resize: none;
     box-sizing: border-box;
     font: inherit;
@@ -206,7 +248,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 2rem 0;
   border-radius: 6px;
   cursor: pointer;
   color: #fff;
@@ -226,7 +268,7 @@ body {
   }
   img {
     width: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
   span {
     font-size: 18px;
@@ -240,7 +282,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 10rem;
     text-align: center;
   }
   h4 {
@@ -252,8 +294,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
+    width: 25rem;
+    height: 25rem;
     border-radius: 6px;
     // background-color: $bg;
     .desc {
@@ -268,7 +310,7 @@ body {
     border-radius: 6px;
     word-break: keep-all;
     p {
-      padding: 0 20px;
+      padding: 0 2rem;
       text-align: left;
       line-height: 2.5;
     }
