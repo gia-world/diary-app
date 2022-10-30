@@ -30,6 +30,11 @@ const Home = () => {
     monthNames[curDate.getMonth()]
   } ${curDate.getFullYear()}`;
 
+  useEffect(() => {
+    const titleEl = document.getElementsByTagName("title")[0];
+    titleEl.innerHTML = `Emotion Diary`;
+  }, []);
+
   // 해당 월의 일기만 가져오기
   useEffect(() => {
     if (diaryList && diaryList.length >= 1) {
