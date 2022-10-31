@@ -57,7 +57,7 @@ body {
 
 @media (min-width: 45rem) {
   .App {
-    width: 44rem;
+    width: 45rem;
   }
 }
 
@@ -245,7 +245,7 @@ body {
 }
 
 .DiaryItem .desc-wrap .preview {
-  max-width: 16rem;
+  max-width: 18rem;
   margin-top: 0.5rem;
   font-size: 1.8rem;
   white-space: nowrap;

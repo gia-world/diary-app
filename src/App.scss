@@ -59,7 +59,7 @@ body {
   padding: 0 2rem;
   box-sizing: border-box;
   @media (min-width: $bp) {
-    width: $bp - 1rem;
+    width: $bp;
   }
   @media (max-width: $bp) {
     width: 90vw;
@@ -182,7 +182,7 @@ body {
       font-size: 1.6rem;
     }
     .preview {
-      max-width: 16rem;
+      max-width: 18rem;
       margin-top: 0.5rem;
       font-size: 1.8rem;
 
